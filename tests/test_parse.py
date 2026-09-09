@@ -37,6 +37,15 @@ def test_item_fields_parsed():
     assert schneller_teller.dish_lines == ["Aglio Spaghetti with Sun-dried Tomatoes"]
     assert schneller_teller.price_student == "2,50 €"
     assert "pflanzlich" in schneller_teller.dietary_tags
+    assert schneller_teller.rating == "4,0"
+
+
+def test_item_without_rating_is_none():
+    week = load_week()
+    schneller_teller_wed = next(
+        item for item in week["tab-wed"].items if item.category == "Schneller Teller"
+    )
+    assert schneller_teller_wed.rating is None
 
 
 def test_tab_id_for_weekday_monday_to_saturday():
