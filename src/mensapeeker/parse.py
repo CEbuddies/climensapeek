@@ -53,9 +53,13 @@ def _parse_item(h5) -> MenuItem | None:
         if img["data-x-tooltip"] != "Bewertung"
     ]
 
+    rating_el = card.find("a", class_="rating")
+    rating = rating_el.get_text(strip=True) if rating_el else None
+
     return MenuItem(
         category=category,
         dish_lines=dish_lines,
         price_student=price_student,
         dietary_tags=dietary_tags,
+        rating=rating,
     )

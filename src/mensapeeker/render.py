@@ -18,6 +18,7 @@ def render_day(day_plan: DayPlan | None, console: Console) -> None:
     table.add_column("Category", style="cyan", no_wrap=True)
     table.add_column("Dish")
     table.add_column("Price (students)", justify="right")
+    table.add_column("Rating", justify="right")
     table.add_column("Tags", style="green")
 
     for item in lunch_items:
@@ -25,6 +26,7 @@ def render_day(day_plan: DayPlan | None, console: Console) -> None:
             item.category,
             "\n".join(item.dish_lines),
             item.price_student or "-",
+            item.rating or "-",
             ", ".join(item.dietary_tags),
         )
 

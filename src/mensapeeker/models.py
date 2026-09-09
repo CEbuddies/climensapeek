@@ -9,6 +9,7 @@ class MenuItem:
     dish_lines: list[str]
     price_student: str | None = None
     dietary_tags: list[str] = field(default_factory=list)
+    rating: str | None = None
 
     @property
     def is_lunch(self) -> bool:
